@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ValidateService} from '../common/services/validate.service';
 import { NotificationService } from '../common/services/notification.service';
+import { AuthService } from '../common/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,7 @@ export class RegisterComponent implements OnInit {
   password: String;
   confirmPassword: String;
   
-  constructor(private vs: ValidateService, private ns: NotificationService) { }
+  constructor(private vs: ValidateService, private ns: NotificationService, private authService: AuthService) { }
 
   onRegisterSubmit() {
     var user = {
@@ -37,7 +38,12 @@ export class RegisterComponent implements OnInit {
     
     if(user.password !== user.confirmPassword) {
         this.ns.show('Password and confirm password mismatched.', {msgType: 'error'});
+        return false;
     }
+    
+    this.authService.registerUser(user).subscribe(data => {
+        console.log('Res: ', data);
+    });
    
   }
     

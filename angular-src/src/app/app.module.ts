@@ -13,13 +13,15 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
 import { ValidateService } from './components/common/services/validate.service';
 import { NotificationService } from './components/common/services/notification.service';
+import { AuthService } from './components/common/services/auth.service';
+import { GuardService } from './components/common/services/guard.service';
 
 var appRoutes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
-    {path: 'dashboard', component: DashboardComponent},
-    {path: 'profile', component: ProfileComponent}
+    {path: 'dashboard', component: DashboardComponent, canActivate: [GuardService]},
+    {path: 'profile', component: ProfileComponent, canActivate: [GuardService]}
 ];
 
 @NgModule({
@@ -38,7 +40,7 @@ var appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [ValidateService, NotificationService],
+  providers: [ValidateService, NotificationService, AuthService, GuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

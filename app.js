@@ -33,6 +33,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 //Use passport authentication startegy
 require('./config/passport')(passport);
+//use middleware cors to allow cross origin request for local developement
+app.use(cors());
 
 //Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
