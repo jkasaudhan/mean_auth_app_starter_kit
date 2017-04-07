@@ -6,7 +6,7 @@ Technology stack used for this project are listed below
 ### Backend
 - MongoDB
 - NodeJS
-  - Modules Used()
+  - Third Party Modules(passport, jsonwebtoken, cors, body-parser)
 - ExpressJS
 
 ### Frontend
