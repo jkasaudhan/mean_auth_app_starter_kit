@@ -1,0 +1,22 @@
+{
+  "name": "mean_auth_app",
+  "version": "1.0.0",
+  "description": "Sample MEAN stack app for authenticating users",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "author": "Jitendra Kasaudhan",
+  "license": "ISC",
+  "dependencies": {
+      "express": "*",
+      "body-parser": "*",
+      "mongoose": "*",
+      "jsonwebtoken": "*",
+      "bcryptjs": "*",
+      "cors": "*",
+      "passport": "*",
+      "passport-jwt": "*"
+  }
+}
